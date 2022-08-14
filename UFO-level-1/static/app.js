@@ -26,6 +26,9 @@ var button = d3.select("#filter-btn");
 // Select the filter
 var form = d3.select("#filters");
 
+
+
+
 // Create event handlers 
 button.on("click", runEnter);
 form.on("submit",runEnter);
@@ -49,3 +52,26 @@ function runEnter() {
 
   console.log(filteredData);
 };
+
+
+function handleClick(){
+  let date =d3.select('#datetime').property('value');
+  let filteredData =tableData;
+  //Check to see if date was entered
+
+  if (date){
+    filteredData =filteredData.filter(row =>row.datetime===date);
+  
+
+  }
+
+  buildTable(filteredData);
+
+}
+d3.selectAll("#filter-btn").on("click", handleClick);
+
+// Build the table when the page loads
+
+
+//Error buildTable(filteredData); is not defined
+// buildTable(filteredData);                   
